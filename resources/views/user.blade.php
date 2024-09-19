@@ -1,6 +1,7 @@
 <html> 
     <head>
          <title>Data User</title>
+         <a href="user/tambah">+tambah user</a>
     </head>
     <body>
         <h1>Data User</h1>
