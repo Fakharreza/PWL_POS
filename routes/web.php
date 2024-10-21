@@ -80,7 +80,12 @@ Route::middleware('auth')->group(function () {
         Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']);  // Menyimpan perubahan data barang ajax
         Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);  // Menampilkan form konfirmasi delete barang ajax
         Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);  // Menghapus data barang ajax
-        Route::delete('/{id}', [BarangController::class, 'destroy']);  // Menghapus data barang
+        Route::delete('/{id}', [BarangController::class, 'destroy']);  // Menghapus data barang 
+        Route::get('/import', [BarangController::class, 'import']);  // Ajax form upload excel
+        Route::post('/import_ajax', [BarangController::class, 'import_ajax']);  // Ajax import excel
+        Route::get('/export_excel', [BarangController::class, 'export_excel']);      // export excel
+        Route::get('/export_pdf',[BarangController::class,'export_pdf']); // export pdf
+
     });
 
     Route::group(['prefix' => 'kategori', 'middleware' => 'authorize:ADM,MNG,STF'], function () {

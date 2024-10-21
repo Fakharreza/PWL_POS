@@ -36,12 +36,17 @@
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="{{ url('/') }}" class="brand-link">
-                <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+               <!-- Brand Logo -->
+               <button onclick="modalAction2('{{ url('/user/' . session('user_id') . '/edit_ajax') }}')" class="btn brand-link">
+                @if (session()->has('profile_img_path'))
+                <img id="profile-picture" src="{{ asset('storage/' . session('profile_img_path')) }}" alt="Profile Picture"
+                        class="brand-image img-circle elevation-3">
+                @else
+                    <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                        class="brand-image img-circle elevation-3" style="opacity: .8">
+                @endif
                 <span class="brand-text font-weight-light">PWL - Starter Code</span>
-            </a>
+            </button>
 
             <!-- Sidebar -->
             @include('layouts.sidebar')
@@ -63,6 +68,15 @@
         @include('layouts.footer')
         <!-- ./wrapper -->
 
+        <div id="editModal" class="modal fade animate shake" tabindex="-1" role="dialog" databackdrop="static" data-keyboard="false" data-width="75%" aria-hidden="true"></div>
+        <script>
+            function modalAction2(url = '') {
+            $('#editModal').load(url, function() {
+                $('#editModal').modal('show');
+            });
+        }
+        
+        </script>
         <!-- jQuery -->
         <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
         <!-- Bootstrap 4 -->
