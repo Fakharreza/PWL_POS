@@ -322,19 +322,4 @@ class PenjualanController extends Controller
 
         return $pdf->stream('Data penjualan' . date('Y-m-d H:i:s') . '.pdf');
     }
-
-    public function export_detail_pdf($id)
-    {
-        $penjualan = penjualanModel::with(['user', 'penjualanDetail.barang'])->find($id);
-
-        // dd($penjualan->penjualanDetail);
-
-        $pdf = Pdf::loadView('penjualan.export_detail_pdf', ['penjualan' => $penjualan]);
-
-        $pdf->setPaper('a4', 'potrait');
-        $pdf->setOption('isRemoteEnabled', true);
-        $pdf->render();
-
-        return $pdf->stream('Data penjualan' . date('Y-m-d H:i:s') . '.pdf');
-    }
 }
