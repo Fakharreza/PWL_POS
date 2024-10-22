@@ -9,6 +9,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\HomeController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -30,11 +31,13 @@ Route::post('login', [AuthController::class, 'postlogin']);
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('register', [AuthController::class, 'register']);
 Route::post('register', [AuthController::class, 'store']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 // Group route yang memerlukan autentikasi
 Route::middleware('auth')->group(function () {
 
-    Route::get('/', [WelcomeController::class, 'index']);
+    Route::get('/home', [WelcomeController::class, 'index']);
 
     Route::group(['prefix' => 'user', 'middleware' => 'authorize:ADM,MNG'], function () {
         Route::get('/', [UserController::class, 'index']);  // Menampilkan halaman awal user
