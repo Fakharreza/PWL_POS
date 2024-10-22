@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class SupplierModel extends Model
 {
@@ -17,4 +19,8 @@ class SupplierModel extends Model
      * @var array
      */
     protected $fillable = ['supplier_kode', 'supplier_nama', 'supplier_alamat'];
+    
+    public function stok(): BelongsTo{
+        return $this->belongsTo(StokModel::class, 'stok_id', 'stok_id');
+    }
 }

@@ -65,7 +65,7 @@ confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';*/
             ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
             ->make(true);
     }
-
+ 
     public function create()
     {
         $breadcrumb = (object)[
@@ -83,6 +83,7 @@ confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';*/
         return view('user.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
     }
 
+    
     //menyimpan data user baru
     public function store(Request $request)
     {

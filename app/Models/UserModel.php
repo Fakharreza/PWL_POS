@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use App\Models\LevelModel;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class UserModel extends Authenticatable
@@ -20,7 +22,10 @@ class UserModel extends Authenticatable
     protected $hidden = ['password'];
 
     protected $casts = ['password' => 'hashed'];
-
+    public function stok(): BelongsTo{
+        return $this->belongsTo(StokModel::class, 'stok_id', 'stok_id');
+    }
+    
     public function level(): BelongsTo{
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
