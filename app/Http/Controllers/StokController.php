@@ -45,14 +45,6 @@ class StokController extends Controller
             ->addColumn('aksi', function ($stok) { // menambahkan kolom aksi
                 $btn  = '<button onclick="modalAction(\'' . url('/stok/' . $stok->stok_id .
                 '/show_ajax') . '\')" class="btn btn-info btn-sm">Detail</button> ';
-                /* $btn .= '<a href="'.url('/user/' . $user->user_id . '/edit').'" class="btn btnwarning btn-sm">Edit</a> ';
-                $btn .= '<form class="d-inline-block" method="POST" action="'. url('/user/'.$user-
-                >user_id).'">'
-                . csrf_field() . method_field('DELETE') .
-                '<button type="submit" class="btn btn-danger btn-sm" onclick="return
-                confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';*/
-                // $btn = '<button onclick="modalAction(\'' . url('/user/' . $user->user_id .
-                //     '/show_ajax') . '\')" class="btn btn-info btn-sm">Detail</button> ';
                 $btn .= '<button onclick="modalAction(\'' . url('/stok/' . $stok->stok_id .
                     '/edit_ajax') . '\')" class="btn btn-warning btn-sm">Edit</button> ';
                 $btn .= '<button onclick="modalAction(\'' . url('/stok/' . $stok->stok_id .
