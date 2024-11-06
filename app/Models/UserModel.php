@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use App\Models\LevelModel;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -51,4 +52,10 @@ class UserModel extends Authenticatable implements JWTSubject
     {
         return $this->level->level_kode;
     } 
+
+    protected function image(): Attribute{
+        return Attribute::make(
+            get: fn($image) => url('/storage/posts/' . $image),
+        );
+    }
 }
